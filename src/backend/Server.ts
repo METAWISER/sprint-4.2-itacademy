@@ -23,9 +23,10 @@ class Server {
 	}
 
 	public middlewares(): void {
-		this.express.use(cors());
-		this.express.use(morgan("dev"));
 		this.express.use(express.json());
+		this.express.use(express.urlencoded({ extended: true }));
+		this.express.use(morgan("dev"));
+		this.express.use(cors());
 	}
 
 	public routes(): void {
