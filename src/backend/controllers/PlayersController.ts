@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-class UsersController {
+class PlayersController {
 	getPlayers = (req: Request, res: Response): void => {
 		res.json({
 			msg: "getPlayers",
@@ -37,4 +37,4 @@ class UsersController {
 	};
 }
 
-export default UsersController;
+export default PlayersController;

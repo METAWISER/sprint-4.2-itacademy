@@ -1,13 +1,13 @@
 import { Router } from "express";
 
-import UsersController from "../controllers/UsersController";
+import PlayersController from "../controllers/PlayersController";
 
 const router = Router();
-const usersController: UsersController = new UsersController();
+const playersController: PlayersController = new PlayersController();
 
-router.get("/", usersController.getPlayers.bind(usersController));
-router.get("/:id", usersController.getPlayer.bind(usersController));
-router.post("/", usersController.createPlayer.bind(usersController));
-router.put("/:id", usersController.updatePlayer.bind(usersController));
+router.get("/", playersController.getPlayers.bind(playersController));
+router.get("/:id", playersController.getPlayer.bind(playersController));
+router.post("/", playersController.createPlayer.bind(playersController));
+router.put("/:id", playersController.updatePlayer.bind(playersController));
 
 export default router;
