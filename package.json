@@ -9,7 +9,7 @@
     "lint:fix": "eslint --fix --ext .ts ./src",
     "start": "set NODE_ENV=prod&& node dist/src/backend/App.js",
     "build": "rimraf dist && tsc",
-    "dev": "set NODE_ENV=dev&& ts-node-dev --inspect --respawn --pretty --transpile-only src/backend/App.ts"
+    "dev": "set NODE_ENV=dev&& ts-node-dev --inspect --respawn --pretty --transpile-only src/backend/server.start.ts"
   },
   "keywords": [],
   "author": "@metawiser",

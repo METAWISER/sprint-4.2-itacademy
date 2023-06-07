@@ -19,6 +19,3 @@ export default class App {
 		return await this.server?.close();
 	}
 }
-
-const app = new App();
-app.start();
