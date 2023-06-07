@@ -1,10 +1,8 @@
-import dotenv from "dotenv";
+import "dotenv/config";
 
 import Server from "./Server";
 
-dotenv.config();
-
-class App {
+export default class App {
 	private server?: Server;
 	private readonly port = process.env.PORT ?? "3000";
 
@@ -15,6 +13,10 @@ class App {
 
 	public getHttpServer(): Server["httpServer"] | undefined {
 		return this.server?.getHTTPServer();
+	}
+
+	public async close(): Promise<void> {
+		return await this.server?.close();
 	}
 }
 

@@ -52,7 +52,7 @@ class Server {
 		return this.httpServer;
 	}
 
-	async stop(): Promise<void> {
+	async close(): Promise<void> {
 		return new Promise<void>((resolve, reject) => {
 			if (this.httpServer) {
 				this.httpServer.close((err) => {
