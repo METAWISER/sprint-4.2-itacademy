@@ -1,13 +1,17 @@
 import { Router } from "express";
 
-import PlayersController from "../controllers/PlayersController";
+import { PlayerCreator } from "../../player/application/PlayerCreator";
+import { MongoosePlayerRepository } from "../../player/infrastructure/persistense/mongoose/MongoosePlayerRepository";
+import playerModel from "../../shared/infrastructure/persistence/mongoose/playerModel";
+import HttpResponse from "../../shared/infrastructure/response/HttpResponse";
+import CreatePlayerController from "../controllers/CreatePlayerController";
 
 const router = Router();
-const playersController: PlayersController = new PlayersController();
+const httpResonse = new HttpResponse();
+const mongoosePlayerRepository = new MongoosePlayerRepository(playerModel);
+const playerCreator = new PlayerCreator(mongoosePlayerRepository);
+const playerController = new CreatePlayerController(playerCreator, httpResonse);
 
-router.get("/", playersController.getPlayers.bind(playersController));
-router.get("/:id", playersController.getPlayer.bind(playersController));
-router.post("/", playersController.createPlayer.bind(playersController));
-router.put("/:id", playersController.updatePlayer.bind(playersController));
+router.post("/", playerController.run);
 
 export default router;

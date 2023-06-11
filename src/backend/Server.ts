@@ -4,6 +4,8 @@ import express, { Application } from "express";
 import http from "http";
 import morgan from "morgan";
 
+//Database connection
+import mongoConnect from "../shared/infrastructure/persistence/mongoose/config";
 import playersRoutes from "./routes/players.routes";
 
 class Server {
@@ -16,6 +18,7 @@ class Server {
 	constructor(private readonly port: string) {
 		this.express = express();
 		//Database connection
+		this.dbConnect();
 		//Middlewares
 		this.middlewares();
 		//Routes
@@ -31,6 +34,10 @@ class Server {
 
 	public routes(): void {
 		this.express.use(this.apiPaths.players, playersRoutes);
+	}
+
+	public async dbConnect(): Promise<void> {
+		await mongoConnect();
 	}
 
 	public async start(): Promise<void> {

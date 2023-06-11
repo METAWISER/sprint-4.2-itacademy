@@ -1,7 +1,9 @@
-import { connect } from "mongoose";
+/* eslint-disable no-console */
+import mongoose from "mongoose";
 
-export default class mongooseConnect {
-	public async connect(): Promise<void> {
-		await connect("mongodb://127.0.0.1:27017/test");
-	}
-}
+const mongoConnect = async (): Promise<void> => {
+	const db = await mongoose.connect(process.env.MONGODB_URI!);
+	console.log("✅ Database is connected to:", db.connection.name);
+};
+
+export default mongoConnect;
