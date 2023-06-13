@@ -51,6 +51,14 @@ class HttpResponse {
 		});
 	}
 
+	UnprocessableEntity(res: Response, data?: unknown): Response {
+		return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({
+			status: HttpStatus.UNPROCESSABLE_ENTITY,
+			msg: "Unprocessable Entity",
+			data,
+		});
+	}
+
 	InternalServerError(res: Response, data?: unknown): Response {
 		return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
 			status: HttpStatus.INTERNAL_SERVER_ERROR,

@@ -1,19 +1,17 @@
 /* eslint-disable no-console */
 import cors from "cors";
-import express, { Application } from "express";
+import express, { Application, Request, Response, Router } from "express";
 import http from "http";
 import morgan from "morgan";
 
 //Database connection
 import mongoConnect from "../shared/infrastructure/persistence/mongoose/config";
-import playersRoutes from "./routes/players.routes";
+import HttpResponse from "../shared/infrastructure/response/HttpResponse";
+import { registerRoutes } from "./routes";
 
 class Server {
 	private readonly express: Application;
 	private httpServer?: http.Server;
-	private readonly apiPaths = {
-		players: "/api/players",
-	};
 
 	constructor(private readonly port: string) {
 		this.express = express();
@@ -22,7 +20,19 @@ class Server {
 		//Middlewares
 		this.middlewares();
 		//Routes
-		this.routes();
+		const router = Router();
+		this.express.use(router);
+		registerRoutes(router);
+		router.use((err: Error, req: Request, res: Response, _next: () => void) => {
+			// eslint-disable-next-line no-console
+			console.log(err);
+			new HttpResponse().InternalServerError(res, "Contact admin");
+		});
+		this.express.use((err: Error, req: Request, res: Response, _next: () => void) => {
+			// eslint-disable-next-line no-console
+			console.log(err);
+			new HttpResponse().InternalServerError(res, "Server error");
+		});
 	}
 
 	public middlewares(): void {
@@ -30,10 +40,6 @@ class Server {
 		this.express.use(express.urlencoded({ extended: true }));
 		this.express.use(morgan("dev"));
 		this.express.use(cors());
-	}
-
-	public routes(): void {
-		this.express.use(this.apiPaths.players, playersRoutes);
 	}
 
 	public async dbConnect(): Promise<void> {

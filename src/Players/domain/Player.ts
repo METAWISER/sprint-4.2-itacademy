@@ -1,4 +1,4 @@
-import { Game } from "../../Games/Game";
+import { Game } from "../../Games/domain/Game";
 import { PlayerId } from "./PlayerId";
 import { PlayerName } from "./PlayerName";
 import { PlayerPassword } from "./PlayerPassword";
@@ -34,7 +34,7 @@ export default class Player {
 
 	toPrimitives(): PlayerPrimitives {
 		return {
-			id: this.uid.value,
+			uid: this.uid.value,
 			name: this.name.value,
 			password: this.password.value,
 			role: this.role.value,

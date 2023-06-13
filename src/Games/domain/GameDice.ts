@@ -1,4 +1,4 @@
-import { NumberValueObject } from "../shared/domain/value-objects/NumberValueObject";
+import { NumberValueObject } from "../../shared/domain/value-objects/NumberValueObject";
 
 export class GameDice extends NumberValueObject {
 	constructor(value?: number) {

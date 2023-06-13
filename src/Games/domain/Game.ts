@@ -1,4 +1,4 @@
-import { PlayerId } from "../Players/domain/PlayerId";
+import { PlayerId } from "../../Players/domain/PlayerId";
 import { DiceResult } from "./DiceResult";
 import { GameDice } from "./GameDice";
 import { GameId } from "./GameId";

@@ -1,4 +1,4 @@
-import { BooleanValueObject } from "../shared/domain/value-objects/BooleanValueObject";
+import { BooleanValueObject } from "../../shared/domain/value-objects/BooleanValueObject";
 
 export class GameResult extends BooleanValueObject {
 	protected toString(): string {

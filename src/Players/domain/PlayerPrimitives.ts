@@ -1,5 +1,5 @@
 export interface PlayerPrimitives {
-	id: string;
+	uid: string;
 	name: string;
 	password: string;
 	role: string;
