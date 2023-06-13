@@ -6,7 +6,7 @@ import Player from "../../../domain/Player";
 
 export class MongoosePlayerRepository implements IPlayerRepository {
 	constructor(readonly ClientModel: Model<IPlayerModel>) {}
-	async save(player: Player): Promise<void> {
+	async create(player: Player): Promise<void> {
 		const playerToSave = new this.ClientModel(player);
 		await playerToSave.save();
 	}

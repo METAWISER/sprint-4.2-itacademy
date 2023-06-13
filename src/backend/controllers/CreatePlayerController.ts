@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
-import { PlayerCreator } from "../../player/application/PlayerCreator";
-import { PlayerCreatorResponse } from "../../player/application/PlayerCreatorResponse";
+import { PlayerCreator } from "../../Players/application/PlayerCreator";
+import { PlayerCreatorResponse } from "../../Players/application/PlayerCreatorResponse";
 import HttpResponse from "../../shared/infrastructure/response/HttpResponse";
 import { IController } from "./IController";
 

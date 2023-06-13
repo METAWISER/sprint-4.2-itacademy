@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-import { PlayerCreator } from "../../player/application/PlayerCreator";
-import { MongoosePlayerRepository } from "../../player/infrastructure/persistense/mongoose/MongoosePlayerRepository";
+import { PlayerCreator } from "../../Players/application/PlayerCreator";
+import { MongoosePlayerRepository } from "../../Players/infrastructure/persistense/mongoose/MongoosePlayerRepository";
 import playerModel from "../../shared/infrastructure/persistence/mongoose/playerModel";
 import HttpResponse from "../../shared/infrastructure/response/HttpResponse";
 import CreatePlayerController from "../controllers/CreatePlayerController";

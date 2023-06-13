@@ -1,9 +1,9 @@
-import { v4 as uuid } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
-export default class Uuid {
+export class Uuid {
 	readonly value: string;
 	constructor(value?: string) {
-		value ? (this.value = value) : (this.value = uuid());
+		value ? (this.value = value) : (this.value = uuidv4());
 	}
 
 	toString(): string {
