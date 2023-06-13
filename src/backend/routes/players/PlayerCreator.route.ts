@@ -9,18 +9,22 @@ import PlayerCreatorController from "../../controllers/PlayerCreator.Controller"
 import { validateReqSchema } from "../index";
 
 export const register = (router: Router): void => {
-	const reqSchema = [body("name").exists().isString()];
+	const reqSchema = [
+		body("name").exists().isString(),
+		body("password").exists().isString(),
+		body("role").exists().isString(),
+	];
 
 	const mongoosePlayerRepository = new MongoosePlayerRepository(playerModel);
 	const playerCreator = new PlayerCreator(mongoosePlayerRepository);
 	const httpResponse = new HttpResponse();
-	const playersCtrl = new PlayerCreatorController(playerCreator, httpResponse);
+	const playerController = new PlayerCreatorController(playerCreator, httpResponse);
 	router.post(
 		"/players",
 		checkExact(reqSchema),
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 		validateReqSchema,
 		// eslint-disable-next-line @typescript-eslint/no-misused-promises
-		async (req: Request, res: Response) => await playersCtrl.run(req, res)
+		async (req: Request, res: Response) => await playerController.run(req, res)
 	);
 };

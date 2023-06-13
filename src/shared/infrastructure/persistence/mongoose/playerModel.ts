@@ -1,14 +1,14 @@
 import { Document, Model, model, Schema } from "mongoose";
 
 export interface IPlayerModel extends Document {
-	uuid: string;
+	uid: string;
 	name: string;
 	password: string;
 	role: string;
 }
 
 const playerSchema: Schema<IPlayerModel> = new Schema<IPlayerModel>({
-	uuid: { type: String, required: true },
+	uid: { type: String, required: true },
 	name: { type: String, required: true },
 	password: { type: String, required: true },
 	role: { type: String, required: true },
